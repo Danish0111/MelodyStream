@@ -29,10 +29,10 @@ async function getSongs(folder) {
     let songUL = document.querySelector(".songlist ul");
     songUL.innerHTML = songs.map(song => `
       <li>
-        <img class="invert" src="music.svg" alt="">
+        <img class="invert" src="/images/music.svg" alt="">
         <div class="info"><div>${song}</div></div>
         <div class="playNow">
-          <img class="invert" src="play2.svg" alt="">
+          <img class="invert" src="/images/play2.svg" alt="">
         </div>
       </li>`).join("");
 
@@ -49,7 +49,9 @@ function playMusic(track, pause = false) {
   currentSong.src = `/${currfolder}/${track}`;
   if (!pause) {
     currentSong.play().catch(console.error);
-    document.getElementById("play").src = "pause.svg";
+    document.getElementById("play").src = "/images/pause.svg"; 
+  } else {
+    document.getElementById("play").src = "/images/play.svg";
   }
   document.querySelector(".songinfo").textContent = track;
   document.querySelector(".songtime").textContent = "00:00 / 00:00";
@@ -110,10 +112,10 @@ async function main() {
   document.getElementById("play").addEventListener("click", () => {
     if (currentSong.paused) {
       currentSong.play().catch(console.error);
-      play.src = "pause.svg";
+      play.src = "/images/pause.svg";
     } else {
       currentSong.pause();
-      play.src = "play.svg";
+      play.src = "/images/play.svg";
     }
   });
 
