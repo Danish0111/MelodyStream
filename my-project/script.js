@@ -55,15 +55,10 @@ function playMusic(track, pause = false) {
 
 async function displayAlbums() {
   try {
-    let response = await fetch("albums.json");
-    let text = await response.json();
-    let div = document.createElement("div");
-    div.innerHTML = text;
-    let cardContainer = document.querySelector(".card-container");
+    let response = await fetch("albums.json"); 
+    let albums = await response.json();
 
-    let albums = Array.from(div.getElementsByTagName("a"))
-      .map(e => e.href.split("/").slice(-2)[0])
-      .filter(folder => folder);
+    let cardContainer = document.querySelector(".card-container");
 
     for (let folder of albums) {
       try {
@@ -89,12 +84,14 @@ async function displayAlbums() {
         console.warn(`Metadata missing for ${folder}:`, metaError);
       }
     }
+
     document.querySelectorAll(".card").forEach(e => {
       e.addEventListener("click", async item => {
         await getSongs(`songs/${item.currentTarget.dataset.folder}`);
         playMusic(songs[0]);
       });
     });
+
   } catch (error) {
     console.error("Error fetching albums:", error);
   }
