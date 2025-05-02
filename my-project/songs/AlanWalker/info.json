@@ -1,4 +1,7 @@
 {
-    "heading": "This is Alan Walker",
-    "description": "Alan Walker hit songs"
-}
+    "heading": "Alan Walker",
+    "description": "Alan Walker songs collection",
+    "songs": [
+      "Alan Walker - Dreamer.mp3"
+    ]
+  }
