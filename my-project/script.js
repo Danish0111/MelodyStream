@@ -55,7 +55,7 @@ function playMusic(track, pause = false) {
 
 async function displayAlbums() {
   try {
-    let response = await fetch("albums.json"); 
+    let response = await fetch("Albums.json"); 
     let albums = await response.json();
 
     let cardContainer = document.querySelector(".card-container");
